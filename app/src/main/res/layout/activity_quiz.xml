@@ -16,7 +16,7 @@
         android:padding="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is a test script."/>
+        android:text="@string/test"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

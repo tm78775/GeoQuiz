@@ -4,4 +4,5 @@
     <string name="false_btn">false</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+    <string name="test">This is my 'test' question.</string>
 </resources>
