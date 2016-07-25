@@ -7,6 +7,8 @@
     <string name="test">This is my test question.</string>
     <string name="next_btn">Next</string>
     <string name="prev_btn">Prev</string>
+    <string name="leftDescr">Will go to previous question.</string>
+    <string name="rightDescr">Will go to the next question.</string>
 
     <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
     <string name="question_mideast">The source of the Nile River is in Egypt.</string>

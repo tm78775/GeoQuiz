@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,8 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionView;
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private ImageButton mNextButton;
+    private ImageButton mPrevButton;
     private int mCurrentIndex;
 
     private Question[] mQuestionBank = new Question[] {
@@ -36,9 +38,10 @@ public class QuizActivity extends AppCompatActivity {
     // get references to view objects.
     private void wireWidgets() {
         mQuestionView = (TextView) findViewById(R.id.questionTextView);
-        mTrueButton   = (Button)   findViewById(R.id.trueButton);
-        mFalseButton  = (Button)   findViewById(R.id.falseButton);
-        mNextButton   = (Button)   findViewById(R.id.nextButton);
+        mTrueButton   = (Button) findViewById(R.id.trueButton);
+        mFalseButton  = (Button) findViewById(R.id.falseButton);
+        mNextButton   = (ImageButton) findViewById(R.id.nextButton);
+        mPrevButton   = (ImageButton) findViewById(R.id.prevButton);
         mCurrentIndex = 0;
 
     }
@@ -63,6 +66,25 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         }));
+
+        mQuestionView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (mCurrentIndex == 0) {
+                    mCurrentIndex = mQuestionBank.length - 1;
+                }
+                else {
+                    mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                }
+                updateQuestion();
+            }
+        });
     }
 
     // update the view with the latest question.
