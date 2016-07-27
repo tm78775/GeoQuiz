@@ -60,4 +60,11 @@
             android:contentDescription="@string/rightDescr"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/cheatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/show_answer_button"/>
+
 </LinearLayout>
