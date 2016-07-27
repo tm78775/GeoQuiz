@@ -9,10 +9,16 @@
     <string name="prev_btn">Prev</string>
     <string name="leftDescr">Will go to previous question.</string>
     <string name="rightDescr">Will go to the next question.</string>
+    <string name="warning_text">Are you sure you want to be a cheater??</string>
+    <string name="show_answer_button">CHEAT!</string>
+    <string name="trueText">The answer is TRUE</string>
+    <string name="falseText">The answer is FALSE</string>
+    <string name="cheater_msg">Cheaters never prosper...Lame.</string>
 
     <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
     <string name="question_mideast">The source of the Nile River is in Egypt.</string>
     <string name="question_americas">The Amazon River is the longest river in the Americas.</string>
     <string name="question_asia">LakeBaikal is the world\'s oldest and deepest freshwater lake.</string>
+    <string name="question_tim">Tim is one of the most awesome, super cool guys I\'ve ever met.</string>
 
 </resources>
