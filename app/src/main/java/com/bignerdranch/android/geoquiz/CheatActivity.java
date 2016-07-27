@@ -59,12 +59,8 @@ public class CheatActivity extends AppCompatActivity {
         showButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mDidCheat = true;
-                if (mAnswerIsTrue) {
-                    answerView.setText(R.string.trueText);
-                }
-                else {
-                    answerView.setText(R.string.falseText);
-                }
+                if (mAnswerIsTrue) { answerView.setText(R.string.trueText); }
+                else { answerView.setText(R.string.falseText); }
                 setAnswerShownResult(true);
             }
         });
@@ -78,12 +74,8 @@ public class CheatActivity extends AppCompatActivity {
 
     private void setAnswerShownResult(boolean answerShown) {
         Intent data = new Intent();
-        if (mDidCheat) {
-            data.putExtra(EXTRA_ANSWER_SHOWN, mDidCheat);
-        }
-        else {
-            data.putExtra(EXTRA_ANSWER_SHOWN, answerShown);
-        }
+        if (mDidCheat) { data.putExtra(EXTRA_ANSWER_SHOWN, mDidCheat); }
+        else { data.putExtra(EXTRA_ANSWER_SHOWN, answerShown); }
         setResult(RESULT_OK, data);
     }
 

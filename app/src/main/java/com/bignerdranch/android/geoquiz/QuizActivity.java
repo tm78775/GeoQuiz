@@ -14,7 +14,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
-    private static final String KEY_CHEATER = "cheater_bool";
     private static final int REQUEST_CODE_CHEAT = 2424;
     private TextView mQuestionView;
     private Button mTrueButton;
@@ -23,7 +22,6 @@ public class QuizActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private int mCurrentIndex;
-    private boolean mIsCheater;
 
     private Question[] mQuestionBank = new Question[] {
         new Question(R.string.question_oceans, true),
@@ -32,8 +30,6 @@ public class QuizActivity extends AppCompatActivity {
         new Question(R.string.question_mideast, false),
         new Question(R.string.question_tim, true)
     };
-
-
 
 /*
  *  Override method calls.
@@ -46,7 +42,6 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate called");
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX);
-            mIsCheater = savedInstanceState.getBoolean(KEY_CHEATER, false);
         }
         else {
             mCurrentIndex = 0;
@@ -92,7 +87,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
-        savedInstanceState.putBoolean(KEY_CHEATER, mIsCheater);
     }
 
     @Override
@@ -102,8 +96,7 @@ public class QuizActivity extends AppCompatActivity {
                 if (data == null) {
                     return;
                 } else {
-                    mIsCheater = CheatActivity.wasAnswerShown(data);
-                    mQuestionBank[mCurrentIndex].setDidCheat(true);
+                    mQuestionBank[mCurrentIndex].setDidCheat(CheatActivity.wasAnswerShown(data));
                 }
             }
         }
@@ -140,7 +133,6 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
-                mIsCheater = false;
             }
         }));
 
@@ -160,7 +152,6 @@ public class QuizActivity extends AppCompatActivity {
                     mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
                 }
                 updateQuestion();
-                mIsCheater = false;
             }
         });
 
@@ -186,11 +177,8 @@ public class QuizActivity extends AppCompatActivity {
             messageResId = R.string.cheater_msg;
         }
         else {
-            if (userPressedTrue == answerIsTrue) {
-                messageResId = R.string.correct_toast;
-            } else {
-                messageResId = R.string.incorrect_toast;
-            }
+            if (userPressedTrue == answerIsTrue) { messageResId = R.string.correct_toast; }
+            else { messageResId = R.string.incorrect_toast; }
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
