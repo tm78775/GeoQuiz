@@ -2,6 +2,7 @@ package com.bignerdranch.android.geoquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +18,7 @@ public class CheatActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private boolean mDidCheat;
     private TextView answerView;
+    private TextView buildView;
     private Button showButton;
     private boolean mAnswerIsTrue;
 
@@ -55,6 +57,10 @@ public class CheatActivity extends AppCompatActivity {
     private void wireLayout() {
         answerView = (TextView) findViewById(R.id.answerTextView);
         showButton = (Button) findViewById(R.id.showAnswerButton);
+        buildView  = (TextView) findViewById(R.id.buildTextView);
+
+        int b = Build.VERSION.SDK_INT;
+        buildView.setText("Android Version: " + b);
 
         showButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
